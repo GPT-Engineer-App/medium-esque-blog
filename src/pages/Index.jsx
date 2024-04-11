@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPlus, FaSearch, FaUserCircle, FaRegBookmark, FaPenFancy, FaChevronDown } from "react-icons/fa";
+import { FaPlus, FaSearch, FaUserCircle, FaRegBookmark, FaPenFancy, FaChevronDown, FaPen } from "react-icons/fa";
 
 const Index = () => {
   const [articles, setArticles] = useState([
@@ -24,11 +24,25 @@ const Index = () => {
     </div>
   );
 
+  const [isWritePanelOpen, setIsWritePanelOpen] = useState(false);
+
+  const openWritePanel = () => {
+    setIsWritePanelOpen(true);
+  };
+
+  const closeWritePanel = () => {
+    setIsWritePanelOpen(false);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <header className="flex justify-between items-center py-6">
         <h1 className="text-4xl font-bold">Medium</h1>
         <div className="flex items-center">
+          <button className="flex items-center text-xl mr-4 focus:outline-none" onClick={openWritePanel}>
+            <FaPen className="mr-1" />
+            Write
+          </button>
           <FaSearch className="text-xl mr-4" />
           <div className="relative">
             <button className="flex items-center focus:outline-none">
@@ -72,6 +86,21 @@ const Index = () => {
           {/* More articles would be rendered here */}
         </section>
       </main>
+
+      {isWritePanelOpen && (
+        <section className="fixed top-0 right-0 bottom-0 w-1/2 bg-white shadow-lg p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold">Write an Article</h2>
+            <button className="text-gray-500 hover:text-gray-700 focus:outline-none" onClick={closeWritePanel}>
+              <span className="sr-only">Close</span>
+              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <textarea className="w-full h-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your article here..."></textarea>
+        </section>
+      )}
 
       <footer className="py-6">
         <div className="flex justify-between items-center">
