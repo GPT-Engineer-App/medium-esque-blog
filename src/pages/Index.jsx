@@ -85,6 +85,12 @@ const Index = () => {
     setIsWritePanelOpen(false);
   };
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <header className="flex justify-between items-center py-6">
@@ -96,11 +102,11 @@ const Index = () => {
           </button>
           <FaSearch className="text-xl mr-4" />
           <div className="relative">
-            <button className="flex items-center focus:outline-none">
+            <button className="flex items-center focus:outline-none" onClick={toggleDropdown}>
               <FaUserCircle className="text-3xl" />
               <FaChevronDown className="ml-1" />
             </button>
-            <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20 hidden">
+            <div className={`absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20 ${isDropdownOpen ? "block" : "hidden"}`}>
               <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
                 Profile
               </a>
