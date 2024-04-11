@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPlus, FaSearch, FaUserCircle, FaRegBookmark, FaPenFancy } from "react-icons/fa";
+import { FaPlus, FaSearch, FaUserCircle, FaRegBookmark, FaPenFancy, FaChevronDown } from "react-icons/fa";
 
 const Index = () => {
   const [articles, setArticles] = useState([
@@ -30,7 +30,23 @@ const Index = () => {
         <h1 className="text-4xl font-bold">Medium</h1>
         <div className="flex items-center">
           <FaSearch className="text-xl mr-4" />
-          <FaUserCircle className="text-3xl" />
+          <div className="relative">
+            <button className="flex items-center focus:outline-none">
+              <FaUserCircle className="text-3xl" />
+              <FaChevronDown className="ml-1" />
+            </button>
+            <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20 hidden">
+              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
+                Profile
+              </a>
+              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
+                Settings
+              </a>
+              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
+                Sign out
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
