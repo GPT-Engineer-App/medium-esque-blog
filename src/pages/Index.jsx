@@ -2,6 +2,24 @@ import React, { useState } from "react";
 import { FaPlus, FaSearch, FaUserCircle, FaRegBookmark, FaPenFancy, FaChevronDown, FaPen } from "react-icons/fa";
 
 const Index = () => {
+  const publishArticle = () => {
+    if (newArticle.title && newArticle.excerpt && newArticle.author && newArticle.publishDate) {
+      setArticles([
+        ...articles,
+        {
+          id: articles.length + 1,
+          ...newArticle,
+        },
+      ]);
+      setNewArticle({
+        title: "",
+        excerpt: "",
+        author: "",
+        publishDate: "",
+      });
+      closeWritePanel();
+    }
+  };
   const [articles, setArticles] = useState([
     {
       id: 1,
@@ -52,6 +70,12 @@ const Index = () => {
   );
 
   const [isWritePanelOpen, setIsWritePanelOpen] = useState(false);
+  const [newArticle, setNewArticle] = useState({
+    title: "",
+    excerpt: "",
+    author: "",
+    publishDate: "",
+  });
 
   const openWritePanel = () => {
     setIsWritePanelOpen(true);
@@ -125,8 +149,15 @@ const Index = () => {
               </svg>
             </button>
           </div>
-          <textarea className="w-full h-2/3 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your article here..."></textarea>
-          <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Publish</button>
+          <form className="space-y-4">
+            <input type="text" className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Title" value={newArticle.title} onChange={(e) => setNewArticle({ ...newArticle, title: e.target.value })} />
+            <textarea className="w-full h-40 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Excerpt" value={newArticle.excerpt} onChange={(e) => setNewArticle({ ...newArticle, excerpt: e.target.value })}></textarea>
+            <input type="text" className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Author" value={newArticle.author} onChange={(e) => setNewArticle({ ...newArticle, author: e.target.value })} />
+            <input type="text" className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Publish Date" value={newArticle.publishDate} onChange={(e) => setNewArticle({ ...newArticle, publishDate: e.target.value })} />
+          </form>
+          <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={publishArticle}>
+            Publish
+          </button>
         </section>
       )}
 
