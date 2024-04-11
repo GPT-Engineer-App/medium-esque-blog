@@ -10,14 +10,41 @@ const Index = () => {
       author: "Jane Doe",
       publishDate: "April 5, 2023",
     },
-    // More articles would go here
+    {
+      id: 2,
+      title: "10 Tips for Writing Clean Code",
+      excerpt: "Improve your code quality with these essential tips...",
+      author: "John Smith",
+      publishDate: "April 8, 2023",
+    },
+    {
+      id: 3,
+      title: "Mastering CSS Grid Layout",
+      excerpt: "Learn how to create complex layouts with CSS Grid...",
+      author: "Sarah Johnson",
+      publishDate: "April 10, 2023",
+    },
+    {
+      id: 4,
+      title: "Introduction to Machine Learning",
+      excerpt: "Get started with the basics of machine learning...",
+      author: "David Lee",
+      publishDate: "April 12, 2023",
+    },
+    {
+      id: 5,
+      title: "Building RESTful APIs with Node.js",
+      excerpt: "Discover how to create robust APIs using Node.js and Express...",
+      author: "Emily Davis",
+      publishDate: "April 15, 2023",
+    },
   ]);
 
   const ArticleCard = ({ article }) => (
-    <div className="border-b border-gray-300 py-6">
-      <h3 className="text-2xl font-semibold mb-2">{article.title}</h3>
+    <div className="border border-gray-300 rounded-md p-4">
+      <h3 className="text-xl font-semibold mb-2">{article.title}</h3>
       <p className="text-gray-600 mb-4">{article.excerpt}</p>
-      <div className="flex items-center justify-between text-gray-500">
+      <div className="flex items-center justify-between text-gray-500 text-sm">
         <span>By {article.author}</span>
         <span>{article.publishDate}</span>
       </div>
@@ -70,7 +97,7 @@ const Index = () => {
             <h2 className="text-3xl font-bold">Featured Articles</h2>
             <FaRegBookmark className="text-2xl" />
           </div>
-          <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {articles.map((article) => (
               <ArticleCard key={article.id} article={article} />
             ))}
@@ -98,7 +125,8 @@ const Index = () => {
               </svg>
             </button>
           </div>
-          <textarea className="w-full h-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your article here..."></textarea>
+          <textarea className="w-full h-2/3 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your article here..."></textarea>
+          <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Publish</button>
         </section>
       )}
 
