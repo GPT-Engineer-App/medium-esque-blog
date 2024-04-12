@@ -94,7 +94,7 @@ const Index = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <header className="flex justify-between items-center py-6">
-        <h1 className="text-4xl font-bold">Medium</h1>
+        <h1 className="text-4xl font-bold">AI Review Studio</h1>
         <div className="flex items-center">
           <button className="flex items-center text-xl mr-4 focus:outline-none" onClick={openWritePanel}>
             <FaPen className="mr-1" />
@@ -169,7 +169,7 @@ const Index = () => {
 
       <footer className="py-6">
         <div className="flex justify-between items-center">
-          <span>© 2023 Medium</span>
+          <span>© 2024 AI Review Studio</span>
           <div className="flex items-center">
             <FaPlus className="text-2xl mr-4" />
             <span>Follow us</span>
